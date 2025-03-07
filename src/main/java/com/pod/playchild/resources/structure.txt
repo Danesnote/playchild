@@ -1,0 +1,24 @@
+config
+- 모든 설정 파일
+
+repository(dao)
+- 데이터베이스와 통신 담당, JPA 는 JpaRepository 상속받아 사용
+
+domain(엔티티, 모델)
+- JPA 사용시 @Entity 선언 , DB테이블과 매핑되는 객체
+
+dto
+- 클라이언트와 데이터를 주고받을 때 사용하는 객체
+request, response 분리시 가독성 증가
+
+exception
+- 전역적 예외처리
+
+security
+- jwt , OAuth2 로그인 등 처리
+
+util
+- 프로젝트 전반 유틸성 기능 정의
+
+
+
