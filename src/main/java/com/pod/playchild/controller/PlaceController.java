@@ -1,5 +1,6 @@
 package com.pod.playchild.controller;
 
+import com.pod.playchild.service.PlaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/places")
 @RequiredArgsConstructor
 public class PlaceController {
-    private final PlaceService placeService;
-
+    //private final PlaceService placeService;
+    /*
     @PostMapping
     public ResponseEntity<PlaceResponseDto> addPlace(@RequestBody PlaceRequestDto requestDto) {
         return ResponseEntity.ok(placeService.addPlace(requestDto));
     }
+    */
 }
