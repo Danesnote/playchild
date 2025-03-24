@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 // 아놀자 개발
 // 2025.03.03 start.
 
-@SpringBootApplication(scanBasePackages = {""})
+@SpringBootApplication()
 public class PlaychildApplication {
 
 	public static void main(String[] args) {
