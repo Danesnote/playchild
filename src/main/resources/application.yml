@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: playchild
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/wise-study?serverTimezone=Asia/Seoul
+    username: root
+    password: admin1!
+# JPA 설정
+  jpa:
+    hibernate:
+      ddl-auto: none        # DB 초기화 전략 (none, create, create-drop, update, validate)
+    properties:
+      hibernate:
+        format_sql: true      # 쿼리 로그 포맷 (정렬)
+        show_sql: true        # 쿼리 로그 출력
