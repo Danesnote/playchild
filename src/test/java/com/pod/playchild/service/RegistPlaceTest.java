@@ -1,7 +1,7 @@
 package com.pod.playchild.service;
 
 import com.pod.playchild.domain.Place;
-import com.pod.playchild.dto.request.PlaceRequestDto;
+import com.pod.playchild.dto.request.PlaceSaveRequestDto;
 import com.pod.playchild.dto.response.PlaceResponseDto;
 import com.pod.playchild.repository.PlaceRepository;
 import org.junit.jupiter.api.Test;
@@ -36,28 +36,28 @@ class RegistPlaceTest {
     @Test
     void 장소_정상_등록() {
         // given
-        PlaceRequestDto placeRequestDto = new PlaceRequestDto() {
+        PlaceSaveRequestDto placeSaveRequestDto = new PlaceSaveRequestDto() {
             String name = "놀이터";
             String address = "서울시 강남구";
             Double latitude = 37.5;
             Double longitude = 127.0;
         };
 
-        Place place = new Place(1L, placeRequestDto.getName(), placeRequestDto.getAddress(), placeRequestDto.getLatitude(), placeRequestDto.getLongitude());
+        Place place = new Place(1L, placeSaveRequestDto.getName(), placeSaveRequestDto.getAddress(), placeSaveRequestDto.getLatitude(), placeSaveRequestDto.getLongitude());
         when(placeRepository.save(any())).thenReturn(place);
 
         // when
-        PlaceResponseDto responseDto = placeService.registerPlace(placeRequestDto);
+        PlaceResponseDto responseDto = placeService.registerPlace(placeSaveRequestDto);
 
         // then
-        assertThat(responseDto.getName()).isEqualTo(placeRequestDto.getName());
-        assertThat(responseDto.getAddress()).isEqualTo(placeRequestDto.getAddress());
+        assertThat(responseDto.getName()).isEqualTo(placeSaveRequestDto.getName());
+        assertThat(responseDto.getAddress()).isEqualTo(placeSaveRequestDto.getAddress());
         verify(placeRepository, times(1)).save(any());
     }
 
     @Test
     void 필수값_누락_시_예외발생() {
-        PlaceRequestDto placeRequestDto = new PlaceRequestDto() {
+        PlaceSaveRequestDto placeSaveRequestDto = new PlaceSaveRequestDto() {
             // given
             String name = "놀이터";
             String address = null;  // 주소 누락
@@ -67,12 +67,12 @@ class RegistPlaceTest {
         };
         // when & then
         assertThrows(IllegalArgumentException.class, () ->
-                placeService.registerPlace(placeRequestDto));
+                placeService.registerPlace(placeSaveRequestDto));
     }
 
     @Test
     void 대한민국_외_위치_등록_불가() {
-        PlaceRequestDto placeRequestDto = new PlaceRequestDto() {
+        PlaceSaveRequestDto placeSaveRequestDto = new PlaceSaveRequestDto() {
             // given
             String name = "미국 공원";
             String address = "뉴욕";
@@ -81,26 +81,26 @@ class RegistPlaceTest {
         };
         // when & then
         assertThrows(IllegalArgumentException.class, () ->
-                placeService.registerPlace(placeRequestDto));
+                placeService.registerPlace(placeSaveRequestDto));
     }
 
     @Test
     void 장소명은_10자이하() {
-        PlaceRequestDto placeRequestDto = new PlaceRequestDto() {
+        PlaceSaveRequestDto placeSaveRequestDto = new PlaceSaveRequestDto() {
             // given
             String name = "미국 공원";
             String address = "뉴욕";
             Double latitude = 37.5;
             Double longitude = 127.0;
         };
-        Place place = new Place(1L, placeRequestDto.getName(), placeRequestDto.getAddress(), placeRequestDto.getLatitude(), placeRequestDto.getLongitude());
+        Place place = new Place(1L, placeSaveRequestDto.getName(), placeSaveRequestDto.getAddress(), placeSaveRequestDto.getLatitude(), placeSaveRequestDto.getLongitude());
         when(placeRepository.save(any())).thenReturn(place);
         // when
-        PlaceResponseDto responseDto = placeService.registerPlace(placeRequestDto);
+        PlaceResponseDto responseDto = placeService.registerPlace(placeSaveRequestDto);
 
         // then
-        assertThat(responseDto.getName()).isEqualTo(placeRequestDto.getName());
-        assertThat(responseDto.getAddress()).isEqualTo(placeRequestDto.getAddress());
+        assertThat(responseDto.getName()).isEqualTo(placeSaveRequestDto.getName());
+        assertThat(responseDto.getAddress()).isEqualTo(placeSaveRequestDto.getAddress());
         verify(placeRepository, times(1)).save(any());
     }
 }

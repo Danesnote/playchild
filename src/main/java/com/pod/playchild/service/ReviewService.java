@@ -1,4 +1,4 @@
 package com.pod.playchild.service;
 
-public interface ReviewService {
+public class ReviewService {
 }

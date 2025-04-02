@@ -1,4 +1,4 @@
-package com.pod.playchild.config;
+package com.pod.playchild.config.jpa;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

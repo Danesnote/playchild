@@ -14,3 +14,10 @@ spring:
       hibernate:
         format_sql: true      # 쿼리 로그 포맷 (정렬)
         show_sql: true        # 쿼리 로그 출력
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liA9hB0a4ySMsJDl
+            client-secret: 35462a7f4adb11642c500eb42be37c6f506f7c1e
