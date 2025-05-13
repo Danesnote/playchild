@@ -1,8 +1,11 @@
 package com.pod.playchild.controller;
 
+import com.pod.playchild.dto.request.PlaceRequestDto;
+import com.pod.playchild.dto.response.PlaceResponseDto;
 import com.pod.playchild.domain.AgeGroup;
 import com.pod.playchild.domain.Place;
 import com.pod.playchild.domain.PlaceCategory;
+
 import com.pod.playchild.service.PlaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +16,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/places")
-@RequiredArgsConstructor
+
+@RequiredArgsConstructor   
 public class PlaceController {
     private final PlaceService placeService;
-    
+
     // 장소 등록 API
     @PostMapping
     public ResponseEntity<Place> registerPlace(@RequestBody PlaceRegisterRequest request) {
