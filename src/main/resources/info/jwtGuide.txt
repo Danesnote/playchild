@@ -1,0 +1,12 @@
+테스트 방법
+
+로그인 요청
+
+curl -X POST "http://localhost:8080/auth/login?username=user&password=1234"
+
+
+👉 응답으로 token 반환
+
+인증 필요한 API 요청
+
+curl -H "Authorization: Bearer <발급받은토큰>" http://localhost:8080/hello
